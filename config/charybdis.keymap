@@ -9,9 +9,6 @@
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500 // 默认:600 原:1000
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20   // 默认:10 原:12
-#define MO_TOG(layer) &mo_tog layer layer   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
-#define MO_TOG_ON(layer) &mo_tog_on layer layer
-#define MO_TOG_OFF(layer) &mo_tog_off layer layer
 
 &lt {
     tapping-term-ms = <200>;
@@ -333,12 +330,12 @@
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans         &trans     &trans     &trans       &trans  &trans     &trans     &trans         &trans  &trans
-&trans  &trans  &kp LC(LS(T))  &mkp MB4   &mkp MB5   &mo 7        &trans  &mkp MB5   &mkp MB4   &kp LC(LS(T))  &trans  &trans
-&trans  &trans  &mkp RCLK      &mkp MCLK  &mkp LCLK  MO_TOG_ON(6)    &trans  &mkp LCLK  &mkp MCLK  &mkp RCLK      &trans  &trans
-&trans  &trans  &trans         &trans     &trans     &trans       &trans  &trans     &trans     &trans         &trans  &trans
-                               &trans     &trans     &trans       &trans  &trans
-                                          &trans     &trans       &trans
+&trans  &trans  &trans         &trans     &trans     &trans          &trans  &trans     &trans     &trans         &trans  &trans
+&trans  &trans  &kp LC(LS(T))  &mkp MB4   &mkp MB5   &mo 7           &trans  &mkp MB5   &mkp MB4   &kp LC(LS(T))  &trans  &trans
+&trans  &trans  &mkp RCLK      &mkp MCLK  &mkp LCLK  &mo_tog_on 6 6  &trans  &mkp LCLK  &mkp MCLK  &mkp RCLK      &trans  &trans
+&trans  &trans  &trans         &trans     &trans     &trans          &trans  &trans     &trans     &trans         &trans  &trans
+                               &trans     &trans     &trans          &trans  &trans
+                                          &trans     &trans          &trans
             >;
         };
 
