@@ -27,7 +27,7 @@
 
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 
-&msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
+&msc_input_listener { input-processors = <&zip_scroll_scaler 3 1>; };
 
 &msc {
     acceleration-exponent = <0>;      // 0
@@ -101,15 +101,6 @@
             toggle-mode = "off";
         };
 
-        // 定义一个名叫 caps 的 hold-tap 行为
-        caps: caps {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>; // 声明它需要接收2个参数（一个给长按，一个给短按）
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&caps_word>; // 长按绑定kp，短按绑定caps_word
-        };
-
         lt: layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -126,6 +117,41 @@
             tapping-term-ms = <200>;
             bindings = <&kp>, <&kp>;
             display-name = "Mod-Tap";
+        };
+
+        // 定义一个名叫 caps 的 hold-tap 行为
+        caps: caps {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>; // 声明它需要接收2个参数（一个给长按，一个给短按）
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&caps_word>; // 长按绑定kp，短按绑定caps_word
+        };
+
+        // 定义一个名为 PIXPIN截图 的 tap-dance 行为
+        pixpinss: td_ctrl_num {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>; // 双击的时间判定范围（200毫秒内算双击）
+            bindings = <&kp LC(N1)>, <&kp LC(N2)>; // 单击是 Ctrl+1，双击是 Ctrl+2
+        };
+
+        // 3. Shift 的 Hold-Tap 行为
+        lmshft_tap: lmshft_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>; // 2 个参数：参数1给Hold(图层)，参数2给Tap(修饰键)
+            flavor = "hold-preferred"; 
+            tapping-term-ms = <200>;
+            bindings = <&lm_shift>, <&kp>; 
+        };
+
+        // 4. Alt 的 Hold-Tap 行为
+        lmalt_tap: lmalt_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>; // 2 个参数：参数1给Hold(图层)，参数2给Tap(修饰键)
+            flavor = "hold-preferred"; 
+            tapping-term-ms = <200>;
+            bindings = <&lm_alt>, <&kp>; 
         };
     };
 
@@ -163,6 +189,97 @@
             label = "To2_macro";
             #binding-cells = <0>;
             bindings = <&rgb_ug RGB_EFF &rgb_ug RGB_COLOR_HSB(250,100,50) &to 2>;
+
+        };
+
+        // 1. 专用于 Shift 的 1 参数 LM 宏
+        lm_shift: lm_shift {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>; // 接收 1 个参数：图层号
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                = <&macro_param_1to1>
+                , <&macro_press &mo MACRO_PLACEHOLDER> // 按住传入的图层
+                , <&macro_press &kp LSHIFT>            // 同时按住 LSHIFT
+                , <&macro_pause_for_release>           // 暂停！等待肉体松开按键
+                , <&macro_release &kp LSHIFT>          // 松开 LSHIFT
+                , <&macro_param_1to1>
+                , <&macro_release &mo MACRO_PLACEHOLDER> // 松开图层
+                ;
+        };
+
+        // 2. 专用于 Alt 的 1 参数 LM 宏
+        lm_alt: lm_alt {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>; // 接收 1 个参数：图层号
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                = <&macro_param_1to1>
+                , <&macro_press &mo MACRO_PLACEHOLDER> // 按住传入的图层
+                , <&macro_press &kp LALT>              // 同时按住 LALT
+                , <&macro_pause_for_release>           // 暂停！等待肉体松开按键
+                , <&macro_release &kp LALT>            // 松开 LALT
+                , <&macro_param_1to1>
+                , <&macro_release &mo MACRO_PLACEHOLDER> // 松开图层
+                ;
+        };
+
+        // 1. Ctrl+K, Ctrl+L (VS Code 展开当前代码块)
+        mc_ctrl_k_l: mc_ctrl_k_l {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(K) &kp LC(L)>;
+        };
+
+        // 2. Ctrl+K, Ctrl+0 (VS Code 折叠所有代码)
+        mc_ctrl_k_0: mc_ctrl_k_0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(K) &kp LC(N0)>; // ZMK 中数字0写成 N0
+        };
+
+        // 3. Ctrl+K, Ctrl+J (VS Code 展开所有代码)
+        mc_ctrl_k_j: mc_ctrl_k_j {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(K) &kp LC(J)>;
+        };
+
+        // 4. Ctrl+K, Ctrl+PgUp
+        mc_ctrl_k_pgup: mc_ctrl_k_pgup {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(K) &kp LC(PG_UP)>;
+        };
+
+        // 5. Ctrl+K, Ctrl+PgDn
+        mc_ctrl_k_pgdn: mc_ctrl_k_pgdn {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(K) &kp LC(PG_DN)>;
+        };
+
+        // 6. Ctrl+K, Ctrl+Left
+        mc_ctrl_k_left: mc_ctrl_k_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(K) &kp LC(LEFT)>;
+        };
+
+        // 7. Ctrl+K, Ctrl+Right
+        mc_ctrl_k_right: mc_ctrl_k_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(K) &kp LC(RIGHT)>;
+        };
+
+        // 8. Ctrl+K, Ctrl+M
+        mc_ctrl_k_m: mc_ctrl_k_m {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(K) &kp LC(M)>;
         };
     };
 
@@ -171,73 +288,74 @@
 
         layer_0 {
             bindings = <
-&kp ESC    &kp N1  &kp N2  &kp N3       &kp N4       &kp N5          &kp N6        &kp N7       &kp N8     &kp N9   &kp N0     &kp BSPC
-&kp TAB    &kp Q   &kp W   &kp E        &kp R        &kp T           &kp Y         &kp U        &kp I      &kp O    &kp P      &kp TAB
-&kp GRAVE  &kp A   &kp S   &kp D        &kp F        &kp G           &kp H         &kp J        &kp K      &kp L    &kp SQT    &caps CAPS 0
-&kp DEL    &kp Z   &kp X   &kp C        &kp V        &kp B           &kp N         &kp M        &kp COMMA  &kp DOT  &kp SLASH  &kp DEL
-                           &key_repeat  &lt 2 SPACE  &trans          &trans        &lt 1 SPACE
-                                        &trans       &lt 3 GRAVE     &lt 5 SEMI
+&kp ESC    &kp N1  &kp N2  &kp N3       &kp N4       &kp N5                       &kp N6              &kp N7       &kp N8     &kp N9   &kp N0     &kp ESC
+&kp TAB    &kp Q   &kp W   &kp E        &kp R        &kp T                        &kp Y               &kp U        &kp I      &kp O    &kp P      &kp TAB
+&kp GRAVE  &kp A   &kp S   &kp D        &kp F        &kp G                        &kp H               &kp J        &kp K      &kp L    &kp SQT    &caps CAPS 0
+&kp DEL    &kp Z   &kp X   &kp C        &kp V        &kp B                        &kp N               &kp M        &kp COMMA  &kp DOT  &kp SLASH  &kp DEL
+                           &key_repeat  &lt 2 SPACE  &lmshft_tap 2 LSHIFT         &lmalt_tap 1 LALT   &lt 1 SPACE
+                                        &kp K_PP     &lt 3 GRAVE                  &lt 5 SEMI
             >;
 
             sensor-bindings =
                 <&scroll_vertical_encoder>,
                 // 编码器1：上下滚动,,
-                <&scroll_horizontal_encoder>;
+                //<&scroll_horizontal_encoder>;
                 // 编码器2：左右滚动
         };
 
         layer_1 {
             bindings = <
-&kp F1    &kp F2        &kp F3        &kp F4        &kp F5        &kp F6            &kp F7     &kp F8     &kp F9     &kp F10     &kp F11   &kp F12
-&trans    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &kp PG_UP  &kp HOME   &kp UP     &kp END     &kp F4    &trans
-&trans    &trans        &trans        &bt BT_PRV    &bt BT_NXT    &bt BT_CLR        &kp PG_DN  &kp LEFT   &kp DOWN   &kp RIGHT   &kp TAB   &trans
-&trans    &trans        &trans        &trans        &trans        &trans            &trans     &trans     &kp F2     &kp F5      &trans    &trans
-                                      &trans        &trans        &kp LSHFT         &trans     &trans
+&kp F1    &kp F2        &kp F3        &kp F4        &kp F5        &kp F6            &kp F7        &kp F8         &kp F9     &kp F10     &kp F11   &kp F12
+&trans    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &kp PG_UP     &kp HOME       &kp UP     &kp END     &kp F4    &trans
+&trans    &trans        &trans        &bt BT_PRV    &bt BT_NXT    &bt BT_CLR        &kp PG_DN     &kp LEFT       &kp DOWN   &kp RIGHT   &kp TAB   &trans
+&trans    &trans        &trans        &trans        &trans        &trans            &kp LC(LEFT)  &kp LC(RIGHT)  &kp F2     &kp F5      &trans    &trans
+                                      &trans        &trans        &kp LSHFT         &trans        &trans
                                                     &trans        &trans            &trans
             >;
+            sensor-bindings = <&sensor_rotate &kp C_VOL_UP &kp C_VOL_DN>;
         };
 
         layer_2 {
             bindings = <
-&trans  &kp N6      &kp N7    &kp N8    &kp N9     &kp N0       &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans      &kp END   &kp UP    &kp HOME   &kp PG_UP    &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &kp K_MENU  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN    &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans      &trans    &trans    &trans     &trans       &trans    &trans  &trans  &trans  &trans  &trans
-                              &trans    &trans     &trans       &kp LALT  &trans
-                                        &trans     &trans       &trans
+&trans  &kp N6      &kp N7     &kp N8    &kp N9         &kp N0          &trans    &trans  &trans  &trans        &trans        &trans
+&trans  &trans      &kp F5     &kp UP    &kp LA(GRAVE)  &trans          &kp N7    &kp N8  &kp N9  &kp N0        &kp KP_NUM    &trans
+&trans  &kp K_MENU  &kp LEFT   &kp DOWN  &kp RIGHT      &pixpinss       &kp N4    &kp N5  &kp N6  &kp KP_DOT    &kp KP_PLUS   &kp KP_MULTIPLY
+&trans  &kp MINUS   &kp EQUAL  &kp BSLH  &kp LBKT       &kp RBKT        &kp N1    &kp N2  &kp N3  &kp KP_COMMA  &kp KP_MINUS  &kp KP_DIVIDE
+                               &trans    &trans         &trans          &kp LALT  &trans
+                                         &trans         &trans          &trans
             >;
         };
 
         layer_3 {
             bindings = <
-&bootloader  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&sys_reset   &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans
-                                &trans  &trans    &trans
+&bootloader  &trans         &trans           &trans            &trans             &trans           &trans  &trans  &trans  &trans   &trans  &trans
+&sys_reset   &kp LC(LS(F))  &kp LC(LA(W))    &kp LC(LA(LEFT))  &kp LC(LA(RIGHT))  &kp LC(LS(E))    &kp F7  &kp F8  &kp F9  &kp F10  &trans  &trans
+&trans       &kp LS(LA(F))  &mc_ctrl_k_pgup  &mc_ctrl_k_left   &mc_ctrl_k_right   &mc_ctrl_k_m     &kp F4  &kp F5  &kp F6  &kp F11  &trans  &trans
+&trans       &kp LC(LS(Q))  &mc_ctrl_k_pgdn  &mc_ctrl_k_l      &kp LC(LS(K))      &trans           &kp F1  &kp F2  &kp F3  &kp F12  &trans  &trans
+                                             &trans            &mc_ctrl_k_0       &mc_ctrl_k_j     &trans  &trans
+                                                               &trans             &trans           &trans
             >;
         };
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans    &trans    &trans    &trans       &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans    &mkp MB4  &mkp MB5  &mo 7        &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  MO_TOG(6)    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans    &trans    &trans    &trans       &trans  &trans  &trans  &trans  &trans  &trans
-                          &trans    &trans    &trans       &trans    &trans
-                                    &trans    &trans       &trans
+&trans  &trans  &trans         &trans     &trans     &trans       &trans  &trans     &trans     &trans         &trans  &trans
+&trans  &trans  &kp LC(LS(T))  &mkp MB4   &mkp MB5   &mo 7        &trans  &mkp MB5   &mkp MB4   &kp LC(LS(T))  &trans  &trans
+&trans  &trans  &mkp RCLK      &mkp MCLK  &mkp LCLK  MO_TOG(6)    &trans  &mkp LCLK  &mkp MCLK  &mkp RCLK      &trans  &trans
+&trans  &trans  &trans         &trans     &trans     &trans       &trans  &trans     &trans     &trans         &trans  &trans
+                               &trans     &trans     &trans       &trans  &trans
+                                          &trans     &trans       &trans
             >;
         };
 
         layer_5 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &bootloader
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &sys_reset
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans
-                                &trans  &trans    &trans
+&trans  &trans   &trans           &trans    &trans        &trans    &trans         &trans            &trans             &trans           &trans         &bootloader
+&trans  &kp INS  &kp PAUSE_BREAK  &kp SLCK  &kp PSCRN     &trans    &kp LC(LS(E))  &kp LC(LA(LEFT))  &kp LC(LA(RIGHT))  &kp LC(LA(W))    &kp LC(LS(F))  &sys_reset
+&trans  &trans   &kp K_VOL_DN     &kp K_PP  &kp K_VOL_UP  &trans    &mc_ctrl_k_m   &mc_ctrl_k_left   &mc_ctrl_k_right   &mc_ctrl_k_pgup  &kp LS(LA(F))  &trans
+&trans  &trans   &trans           &trans    &trans        &trans    &trans         &kp LC(LS(K))     &mc_ctrl_k_l       &mc_ctrl_k_pgdn  &kp LC(LS(Q))  &trans
+                                  &trans    &trans        &trans    &mc_ctrl_k_j   &mc_ctrl_k_0
+                                            &trans        &trans    &trans
             >;
         };
 
