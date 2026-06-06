@@ -381,49 +381,49 @@
 
         L_CS {
             timeout-ms = <50>;
-			bindings = <&kp LC(LSHFT)>;
+			bindings = <&sk LC(LSHFT)>;
             key-positions = <26 28>;
         };
 
         R_CS {
             timeout-ms = <50>;
-			bindings = <&kp RC(RSHFT)>;
+			bindings = <&sk RC(RSHFT)>;
             key-positions = <31 33>;
         };
 
         L_CA {
             timeout-ms = <50>;
-			bindings = <&kp LC(LALT)>;
+			bindings = <&sk LC(LALT)>;
             key-positions = <37 26>;
         };
 
         R_CA {
             timeout-ms = <50>;
-			bindings = <&kp RC(RALT)>;
+			bindings = <&sk RC(RALT)>;
             key-positions = <46 33>;
         };
 
         L_SA {
             timeout-ms = <50>;
-			bindings = <&kp LS(LALT)>;
+			bindings = <&sk LS(LALT)>;
             key-positions = <28 37>;
         };
 
         R_SA {
             timeout-ms = <50>;
-			bindings = <&kp RS(RALT)>;
+			bindings = <&sk RS(RALT)>;
             key-positions = <31 46>;
         };
 
         L_CSA {
             timeout-ms = <50>;
-			bindings = <&kp LC(LS(LALT))>;
+			bindings = <&sk LC(LS(LALT))>;
             key-positions = <28 26 37>;
         };
 
         R_CSA {
             timeout-ms = <50>;
-			bindings = <&kp RC(RS(RALT))>;
+			bindings = <&sk RC(RS(RALT))>;
             key-positions = <46 33 31>;
         };
 
