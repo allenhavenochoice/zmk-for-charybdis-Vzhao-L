@@ -43,7 +43,6 @@
 
 / {
     // 上下滚动编码器行为
-
     scroll_vertical_encoder: scroll_vertical_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
@@ -53,12 +52,27 @@
     };
 
     // 左右滚动编码器行为
-
     scroll_horizontal_encoder: scroll_horizontal_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
 
+        tap-ms = <100>;
+    };
+
+    // 音量编码器行为
+    volume_encoder: volume_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&kp C_VOL_DN>, <&kp C_VOL_UP>;
+        tap-ms = <100>;
+    };
+
+    // 曲目编码器行为
+    track_encoder: track_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&kp C_NEXT>, <&kp C_PREV>;
         tap-ms = <100>;
     };
 
@@ -99,24 +113,6 @@
             #binding-cells = <1>;
             display-name = "Toggle Layer off";
             toggle-mode = "off";
-        };
-
-        lt: layer_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&kp>;
-            display-name = "Layer-Tap";
-        };
-
-        mt: mod_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&kp>, <&kp>;
-            display-name = "Mod-Tap";
         };
 
         // 定义一个名叫 caps 的 hold-tap 行为
@@ -297,10 +293,7 @@
             >;
 
             sensor-bindings =
-                <&scroll_vertical_encoder>,
-                // 编码器1：上下滚动,,
-                //<&scroll_horizontal_encoder>;
-                // 编码器2：左右滚动
+                <&scroll_vertical_encoder>;
         };
 
         layer_1 {
@@ -312,7 +305,8 @@
                                       &trans        &trans        &kp LSHFT         &trans        &trans
                                                     &trans        &trans            &trans
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings =
+                <&volume_encoder>;
         };
 
         layer_2 {
@@ -357,6 +351,8 @@
                                   &trans    &trans        &trans    &mc_ctrl_k_j   &mc_ctrl_k_0
                                             &trans        &trans    &trans
             >;
+            sensor-bindings =
+                <&track_encoder>;
         };
 
         layer_6 {
