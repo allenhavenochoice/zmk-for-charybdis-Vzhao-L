@@ -308,127 +308,152 @@
         compatible = "zmk,combos";
 
         L_BSPC {
-            bindings = <&kp BACKSPACE>;
+            timeout-ms = <50>;
+			bindings = <&kp BACKSPACE>;
             key-positions = <16 15>;
         };
 
         R_BSPC {
-            bindings = <&kp BSPC>;
+            timeout-ms = <50>;
+			bindings = <&kp BSPC>;
             key-positions = <19 20>;
         };
 
         L_DEL {
-            bindings = <&kp DEL>;
+            timeout-ms = <50>;
+			bindings = <&kp DEL>;
             key-positions = <14 15>;
         };
 
         R_DEL {
+            timeout-ms = <50>;
             bindings = <&kp DEL>;
             key-positions = <20 21>;
         };
 
         L_GUI {
-            bindings = <&sk LGUI>;
+            timeout-ms = <50>;
+			bindings = <&sk LGUI>;
             key-positions = <25 26>;
         };
 
         R_GUI {
-            bindings = <&sk RGUI>;
+            timeout-ms = <50>;
+			bindings = <&sk RGUI>;
             key-positions = <34 33>;
         };
 
         L_SHFT {
-            bindings = <&sk LSHFT>;
+            timeout-ms = <50>;
+			bindings = <&sk LSHFT>;
             key-positions = <28 27>;
         };
 
         R_SHFT {
-            bindings = <&sk RSHFT>;
+            timeout-ms = <50>;
+			bindings = <&sk RSHFT>;
             key-positions = <32 31>;
         };
 
         L_CTRL {
-            bindings = <&sk LCTRL>;
+            timeout-ms = <50>;
+			bindings = <&sk LCTRL>;
             key-positions = <27 26>;
         };
 
         R_CTRL {
-            bindings = <&sk RCTRL>;
+            timeout-ms = <50>;
+			bindings = <&sk RCTRL>;
             key-positions = <32 33>;
         };
 
         L_ALT {
-            bindings = <&sk LALT>;
+            timeout-ms = <50>;
+			bindings = <&sk LALT>;
             key-positions = <38 39>;
         };
 
         R_ALT {
-            bindings = <&sk RALT>;
+            timeout-ms = <50>;
+			bindings = <&sk RALT>;
             key-positions = <45 44>;
         };
 
         L_CS {
-            bindings = <&kp LC(LSHFT)>;
+            timeout-ms = <50>;
+			bindings = <&kp LC(LSHFT)>;
             key-positions = <26 28>;
         };
 
         R_CS {
-            bindings = <&kp RC(RSHFT)>;
+            timeout-ms = <50>;
+			bindings = <&kp RC(RSHFT)>;
             key-positions = <31 33>;
         };
 
         L_CA {
-            bindings = <&kp LC(LALT)>;
+            timeout-ms = <50>;
+			bindings = <&kp LC(LALT)>;
             key-positions = <37 26>;
         };
 
         R_CA {
-            bindings = <&kp RC(RALT)>;
+            timeout-ms = <50>;
+			bindings = <&kp RC(RALT)>;
             key-positions = <46 33>;
         };
 
         L_SA {
-            bindings = <&kp LS(LALT)>;
+            timeout-ms = <50>;
+			bindings = <&kp LS(LALT)>;
             key-positions = <28 37>;
         };
 
         R_SA {
-            bindings = <&kp RS(RALT)>;
+            timeout-ms = <50>;
+			bindings = <&kp RS(RALT)>;
             key-positions = <31 46>;
         };
 
         L_CSA {
-            bindings = <&kp LC(LS(LALT))>;
+            timeout-ms = <50>;
+			bindings = <&kp LC(LS(LALT))>;
             key-positions = <28 26 37>;
         };
 
         R_CSA {
-            bindings = <&kp RC(RS(RALT))>;
+            timeout-ms = <50>;
+			bindings = <&kp RC(RS(RALT))>;
             key-positions = <46 33 31>;
         };
 
         L_ENTER {
-            bindings = <&kp ENTER>;
+            timeout-ms = <50>;
+			bindings = <&kp ENTER>;
             key-positions = <39 40>;
         };
 
         R_ENTER {
-            bindings = <&kp ENTER>;
+            timeout-ms = <50>;
+			bindings = <&kp ENTER>;
             key-positions = <43 44>;
         };
 
         M_ENTER {
-            bindings = <&kp ENTER>;
+            timeout-ms = <50>;
+			bindings = <&kp ENTER>;
             key-positions = <49 52>;
         };
 
         L_TAB {
-            bindings = <&kp TAB>;
+            timeout-ms = <50>;
+			bindings = <&kp TAB>;
             key-positions = <28 29>;
         };
 
         R_TAB {
-            bindings = <&kp TAB>;
+            timeout-ms = <50>;
+			bindings = <&kp TAB>;
             key-positions = <31 30>;
         };
     };
@@ -438,38 +463,39 @@
 
         layer_0 {
             bindings = <
-&kp ESC    &kp N1  &kp N2  &kp N3       &kp N4       &kp N5                  &kp N6             &kp N7       &kp N8     &kp N9   &kp N0     &kp ESC
-&kp TAB    &kp Q   &kp W   &kp E        &kp R        &kp T                   &kp Y              &kp U        &kp I      &kp O    &kp P      &kp TAB
-&kp GRAVE  &kp A   &kp S   &kp D        &kp F        &kp G                   &kp H              &kp J        &kp K      &kp L    &kp SQT    &caps CAPS 0
-&kp DEL    &kp Z   &kp X   &kp C        &kp V        &kp B                   &kp N              &kp M        &kp COMMA  &kp DOT  &kp SLASH  &kp DEL
-                           &key_repeat  &lt 2 SPACE  &lmshft_tap 2 LSHIFT    &lmalt_tap 1 LALT  &lt 1 SPACE
-                                        &kp K_PP     &lt 3 GRAVE             &lt 5 SEMI
+&kp ESC     &kp N1  &kp N2  &kp N3       &kp N4       &kp N5                       &kp N6              &kp N7       &kp N8     &kp N9   &kp N0     &kp ESC
+&kp TAB     &kp Q   &kp W   &kp E        &kp R        &kp T                        &kp Y               &kp U        &kp I      &kp O    &kp P      &kp TAB
+&kp K_MENU  &kp A   &kp S   &kp D        &kp F        &kp G                        &kp H               &kp J        &kp K      &kp L    &kp SQT    &caps CAPS 0
+&kp DEL     &kp Z   &kp X   &kp C        &kp V        &kp B                        &kp N               &kp M        &kp COMMA  &kp DOT  &kp SLASH  &kp DEL
+                            &key_repeat  &lt 2 SPACE  &lmshft_tap 2 LSHIFT         &lmalt_tap 1 LALT   &lt 1 SPACE
+                                         &kp K_PP     &lt 3 GRAVE                  &lt 5 SEMI
             >;
 
-            sensor-bindings = <&scroll_vertical_encoder>;
+            sensor-bindings =
+                <&scroll_vertical_encoder>;
         };
 
         layer_1 {
             bindings = <
-&kp F1  &kp F2        &kp F3        &kp F4        &kp F5        &kp F6          &kp F7        &kp F8         &kp F9    &kp F10    &kp F11  &kp F12
-&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp PG_UP     &kp HOME       &kp UP    &kp END    &kp F4   &trans
-&trans  &trans        &trans        &bt BT_PRV    &bt BT_NXT    &bt BT_CLR      &kp PG_DN     &kp LEFT       &kp DOWN  &kp RIGHT  &kp TAB  &trans
-&trans  &trans        &trans        &trans        &trans        &trans          &kp LC(LEFT)  &kp LC(RIGHT)  &kp F2    &kp F5     &trans   &trans
-                                    &trans        &trans        &kp LSHFT       &trans        &trans
-                                                  &trans        &trans          &trans
+&kp F1    &kp F2        &kp F3        &kp F4        &kp F5        &kp F6            &kp F7        &kp F8         &kp F9     &kp F10     &kp F11  &kp F12
+&trans    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &kp PG_UP     &kp HOME       &kp UP     &kp END     &kp F4   &trans
+&trans    &bt BT_CLR    &trans        &kp DEL       &kp BSPC      &kp ENTER         &kp PG_DN     &kp LEFT       &kp DOWN   &kp RIGHT   &kp TAB  &trans
+&trans    &trans        &trans        &trans        &trans        &trans            &kp LC(LEFT)  &kp LC(RIGHT)  &kp F2     &kp F5      &trans   &trans
+                                      &trans        &trans        &kp LSHFT         &trans        &trans
+                                                    &trans        &trans            &trans
             >;
-
-            sensor-bindings = <&volume_encoder>;
+            sensor-bindings =
+                <&volume_encoder>;
         };
 
         layer_2 {
             bindings = <
-&trans  &kp N6      &kp N7     &kp N8    &kp N9         &kp N0       &trans    &trans  &trans  &trans        &trans        &trans
-&trans  &trans      &kp F5     &kp UP    &kp LA(GRAVE)  &trans       &kp N7    &kp N8  &kp N9  &kp N0        &kp KP_NUM    &trans
-&trans  &kp K_MENU  &kp LEFT   &kp DOWN  &kp RIGHT      &pixpinss    &kp N4    &kp N5  &kp N6  &kp KP_DOT    &kp KP_PLUS   &kp KP_MULTIPLY
-&trans  &kp MINUS   &kp EQUAL  &kp BSLH  &kp LBKT       &kp RBKT     &kp N1    &kp N2  &kp N3  &kp KP_COMMA  &kp KP_MINUS  &kp KP_DIVIDE
-                               &trans    &trans         &trans       &kp LALT  &trans
-                                         &trans         &trans       &trans
+&trans  &kp N6      &kp N7     &kp N8    &kp N9         &kp N0          &trans    &trans  &trans  &trans        &trans        &trans
+&trans  &trans      &kp F5     &kp UP    &kp LA(GRAVE)  &trans          &kp N7    &kp N8  &kp N9  &kp N0        &kp KP_NUM    &trans
+&trans  &kp K_MENU  &kp LEFT   &kp DOWN  &kp RIGHT      &pixpinss       &kp N4    &kp N5  &kp N6  &kp KP_DOT    &kp KP_PLUS   &kp KP_MULTIPLY
+&trans  &kp MINUS   &kp EQUAL  &kp BSLH  &kp LBKT       &kp RBKT        &kp N1    &kp N2  &kp N3  &kp KP_COMMA  &kp KP_MINUS  &kp KP_DIVIDE
+                               &trans    &trans         &trans          &kp LALT  &trans
+                                         &trans         &trans          &trans
             >;
         };
 
@@ -486,12 +512,12 @@
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans         &trans     &trans     &trans            &trans  &trans     &trans     &trans         &trans  &trans
-&trans  &trans  &kp LC(LS(T))  &mkp MB4   &mkp MB5   &mo 7             &trans  &mkp MB5   &mkp MB4   &kp LC(LS(T))  &trans  &trans
-&trans  &trans  &mkp RCLK      &mkp MCLK  &mkp LCLK  &mo_tog_on 6 6    &trans  &mkp LCLK  &mkp MCLK  &mkp RCLK      &trans  &trans
-&trans  &trans  &trans         &trans     &trans     &trans            &trans  &trans     &trans     &trans         &trans  &trans
-                               &trans     &trans     &trans            &trans  &trans
-                                          &trans     &trans            &trans
+&trans  &trans  &trans         &trans     &trans     &trans          &trans  &trans     &trans     &trans         &trans  &trans
+&trans  &trans  &kp LC(LS(T))  &mkp MB4   &mkp MB5   &mo 7           &trans  &mkp MB5   &mkp MB4   &kp LC(LS(T))  &trans  &trans
+&trans  &trans  &mkp RCLK      &mkp MCLK  &mkp LCLK  &mo_tog_on 6 6  &trans  &mkp LCLK  &mkp MCLK  &mkp RCLK      &trans  &trans
+&trans  &trans  &trans         &trans     &trans     &trans          &trans  &trans     &trans     &trans         &trans  &trans
+                               &trans     &trans     &trans          &trans  &trans
+                                          &trans     &trans          &trans
             >;
         };
 
@@ -504,8 +530,8 @@
                                   &trans    &trans        &trans    &mc_ctrl_k_j   &mc_ctrl_k_0
                                             &trans        &trans    &trans
             >;
-
-            sensor-bindings = <&track_encoder>;
+            sensor-bindings =
+                <&track_encoder>;
         };
 
         layer_6 {
