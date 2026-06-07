@@ -331,6 +331,36 @@
             key-positions = <20 21>;
         };
 
+        L_ENTER {
+            timeout-ms = <50>;
+            bindings = <&kp ENTER>;
+            key-positions = <39 40>;
+        };
+
+        R_ENTER {
+            timeout-ms = <50>;
+            bindings = <&kp ENTER>;
+            key-positions = <43 44>;
+        };
+
+        M_ENTER {
+            timeout-ms = <50>;
+            bindings = <&kp ENTER>;
+            key-positions = <49 52>;
+        };
+
+        L_TAB {
+            timeout-ms = <50>;
+            bindings = <&kp TAB>;
+            key-positions = <28 29>;
+        };
+
+        R_TAB {
+            timeout-ms = <50>;
+            bindings = <&kp TAB>;
+            key-positions = <31 30>;
+        };
+
         L_GUI {
             timeout-ms = <80>;
             require-prior-idle-ms = <120>;
@@ -443,62 +473,44 @@
             key-positions = <31 46 33>;
         };
 
-        L_ENTER {
-            timeout-ms = <50>;
-            bindings = <&kp ENTER>;
-            key-positions = <39 40>;
-        };
-
-        R_ENTER {
-            timeout-ms = <50>;
-            bindings = <&kp ENTER>;
-            key-positions = <43 44>;
-        };
-
-        M_ENTER {
-            timeout-ms = <50>;
-            bindings = <&kp ENTER>;
-            key-positions = <49 52>;
-        };
-
-        L_TAB {
-            timeout-ms = <50>;
-            bindings = <&kp TAB>;
-            key-positions = <28 29>;
-        };
-
-        R_TAB {
-            timeout-ms = <50>;
-            bindings = <&kp TAB>;
-            key-positions = <31 30>;
-        };
-
         L_GS {
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
             bindings = <&sk LG(LSHFT)>;
             key-positions = <28 25>;
         };
 
         R_GS {
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
             bindings = <&sk RG(RSHFT)>;
             key-positions = <31 34>;
         };
 
         L_GC {
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
             bindings = <&sk LG(LCTRL)>;
             key-positions = <25 27>;
         };
 
         R_GC {
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
             bindings = <&sk RG(RCTRL)>;
             key-positions = <32 34>;
         };
 
         L_GA {
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
             bindings = <&sk LG(LALT)>;
             key-positions = <25 40>;
         };
 
         R_GA {
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
             bindings = <&sk RG(RALT)>;
             key-positions = <34 43>;
         };
