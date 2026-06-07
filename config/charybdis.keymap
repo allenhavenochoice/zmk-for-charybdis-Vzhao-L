@@ -332,97 +332,113 @@
         };
 
         L_GUI {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk LGUI>;
             key-positions = <25 26>;
         };
 
         R_GUI {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk RGUI>;
             key-positions = <34 33>;
         };
 
         L_SHFT {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk LSHFT>;
             key-positions = <28 27>;
         };
 
         R_SHFT {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk RSHFT>;
             key-positions = <32 31>;
         };
 
         L_CTRL {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk LCTRL>;
             key-positions = <27 26>;
         };
 
         R_CTRL {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk RCTRL>;
             key-positions = <32 33>;
         };
 
         L_ALT {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk LALT>;
             key-positions = <38 39>;
         };
 
         R_ALT {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk RALT>;
             key-positions = <45 44>;
         };
 
         L_CS {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk LC(LSHFT)>;
             key-positions = <26 28>;
         };
 
         R_CS {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk RC(RSHFT)>;
             key-positions = <31 33>;
         };
 
         L_CA {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk LC(LALT)>;
             key-positions = <37 26>;
         };
 
         R_CA {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk RC(RALT)>;
             key-positions = <46 33>;
         };
 
         L_SA {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk LS(LALT)>;
             key-positions = <28 37>;
         };
 
         R_SA {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk RS(RALT)>;
             key-positions = <31 46>;
         };
 
         L_CSA {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk LC(LS(LALT))>;
             key-positions = <28 26 37>;
         };
 
         R_CSA {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <120>;
 			bindings = <&sk RC(RS(RALT))>;
             key-positions = <46 33 31>;
         };
@@ -465,12 +481,12 @@
             bindings = <
 &kp ESC     &kp N1  &kp N2  &kp N3       &kp N4       &kp N5                       &kp N6              &kp N7       &kp N8     &kp N9   &kp N0     &kp ESC
 &kp TAB     &kp Q   &kp W   &kp E        &kp R        &kp T                        &kp Y               &kp U        &kp I      &kp O    &kp P      &kp TAB
-&kp K_MENU  &kp A   &kp S   &kp D        &kp F        &kp G                        &kp H               &kp J        &kp K      &kp L    &kp SQT    &caps CAPS 0
+&kp K_APP   &kp A   &kp S   &kp D        &kp F        &kp G                        &kp H               &kp J        &kp K      &kp L    &kp SEMI   &kp SQT  //&caps CAPS 0
 &kp DEL     &kp Z   &kp X   &kp C        &kp V        &kp B                        &kp N               &kp M        &kp COMMA  &kp DOT  &kp SLASH  &kp DEL
                             &key_repeat  &lt 2 SPACE  &lmshft_tap 2 LSHIFT         &lmalt_tap 1 LALT   &lt 1 SPACE
-                                         &kp K_PP     &lt 3 GRAVE                  &lt 5 SEMI
+                                         &kp K_PP     &lt 3 GRAVE                  &lt 5 CAPS
             >;
-
+            
             sensor-bindings =
                 <&scroll_vertical_encoder>;
         };
@@ -492,7 +508,7 @@
             bindings = <
 &trans  &kp N6      &kp N7     &kp N8    &kp N9         &kp N0          &trans    &trans  &trans  &trans        &trans        &trans
 &trans  &trans      &kp F5     &kp UP    &kp LA(GRAVE)  &trans          &kp N7    &kp N8  &kp N9  &kp N0        &kp KP_NUM    &trans
-&trans  &kp K_MENU  &kp LEFT   &kp DOWN  &kp RIGHT      &pixpinss       &kp N4    &kp N5  &kp N6  &kp KP_DOT    &kp KP_PLUS   &kp KP_MULTIPLY
+&trans  &kp K_APP   &kp LEFT   &kp DOWN  &kp RIGHT      &pixpinss       &kp N4    &kp N5  &kp N6  &kp KP_DOT    &kp KP_PLUS   &kp KP_MULTIPLY
 &trans  &kp MINUS   &kp EQUAL  &kp BSLH  &kp LBKT       &kp RBKT        &kp N1    &kp N2  &kp N3  &kp KP_COMMA  &kp KP_MINUS  &kp KP_DIVIDE
                                &trans    &trans         &trans          &kp LALT  &trans
                                          &trans         &trans          &trans
@@ -546,39 +562,6 @@
         };
 
         layer_7 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans
-                                &trans  &trans    &trans
-            >;
-        };
-
-        layer_8 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans
-                                &trans  &trans    &trans
-            >;
-        };
-
-        layer_9 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans
-                                &trans  &trans    &trans
-            >;
-        };
-
-        layer_10 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
