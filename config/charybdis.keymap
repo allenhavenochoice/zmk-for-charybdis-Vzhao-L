@@ -568,7 +568,7 @@
 &bootloader  &trans         &trans           &trans            &trans             &trans           &trans         &trans            &trans             &trans           &trans         &trans
 &sys_reset   &kp LC(LS(F))  &kp LC(LA(W))    &kp LC(LA(LEFT))  &kp LC(LA(RIGHT))  &kp LC(LS(E))    &kp LC(LS(E))  &kp LC(LA(LEFT))  &kp LC(LA(RIGHT))  &kp LC(LA(W))    &kp LC(LS(F))  &trans
 &trans       &kp LS(LA(F))  &mc_ctrl_k_pgup  &mc_ctrl_k_left   &mc_ctrl_k_right   &mc_ctrl_k_m     &mc_ctrl_k_m   &mc_ctrl_k_left   &mc_ctrl_k_right   &mc_ctrl_k_pgup  &kp LS(LA(F))  &trans
-&trans       &kp LC(LS(Q))  &mc_ctrl_k_pgdn  &mc_ctrl_k_l      &kp LC(LS(K))      &trans           &trans         &kp LC(LS(K))     &mc_ctrl_k_l       &mc_ctrl_k_pgdn  &kp LC(LS(Q))  &trans
+&trans       &kp LC(LS(P))  &mc_ctrl_k_pgdn  &mc_ctrl_k_l      &kp LC(LS(K))      &trans           &trans         &kp LC(LS(K))     &mc_ctrl_k_l       &mc_ctrl_k_pgdn  &kp LC(LS(P))  &trans
                                              &trans            &mc_ctrl_k_0       &mc_ctrl_k_j     &mc_ctrl_k_j   &mc_ctrl_k_0
                                                                &trans             &trans           &trans
             >;
