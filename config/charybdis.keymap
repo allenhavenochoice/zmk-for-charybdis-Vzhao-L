@@ -565,8 +565,8 @@
 
         layer_3 {
             bindings = <
-&bootloader  &trans         &trans           &trans            &trans             &trans           &trans         &trans            &trans             &trans           &trans         &trans
-&sys_reset   &kp LC(LS(F))  &kp LC(LA(W))    &kp LC(LA(LEFT))  &kp LC(LA(RIGHT))  &kp LC(LS(E))    &kp LC(LS(E))  &kp LC(LA(LEFT))  &kp LC(LA(RIGHT))  &kp LC(LA(W))    &kp LC(LS(F))  &trans
+&bootloader  &trans         &trans           &trans            &trans             &trans           &trans         &trans            &trans             &trans           &trans         &bootloader
+&sys_reset   &kp LC(LS(F))  &kp LC(LA(W))    &kp LC(LA(LEFT))  &kp LC(LA(RIGHT))  &kp LC(LS(E))    &kp LC(LS(E))  &kp LC(LA(LEFT))  &kp LC(LA(RIGHT))  &kp LC(LA(W))    &kp LC(LS(F))  &sys_reset
 &trans       &kp LS(LA(F))  &mc_ctrl_k_pgup  &mc_ctrl_k_left   &mc_ctrl_k_right   &mc_ctrl_k_m     &mc_ctrl_k_m   &mc_ctrl_k_left   &mc_ctrl_k_right   &mc_ctrl_k_pgup  &kp LS(LA(F))  &trans
 &trans       &kp LC(LS(Q))  &mc_ctrl_k_pgdn  &mc_ctrl_k_l      &kp LC(LS(K))      &trans           &trans         &kp LC(LS(K))     &mc_ctrl_k_l       &mc_ctrl_k_pgdn  &kp LC(LS(Q))  &trans
                                              &trans            &mc_ctrl_k_0       &mc_ctrl_k_j     &mc_ctrl_k_j   &mc_ctrl_k_0
@@ -587,8 +587,8 @@
 
         layer_5 {
             bindings = <
-&trans  &trans   &trans           &trans            &trans        &trans    &trans  &trans  &trans  &trans   &trans   &bootloader
-&trans  &kp INS  &kp PAUSE_BREAK  &kp SLCK          &kp PSCRN     &trans    &kp F7  &kp F8  &kp F9  &kp F10  &kp F13  &sys_reset
+&bootloader  &trans   &trans           &trans            &trans        &trans    &trans  &trans  &trans  &trans   &trans   &bootloader
+&sys_reset  &kp INS  &kp PAUSE_BREAK  &kp SLCK          &kp PSCRN     &trans    &kp F7  &kp F8  &kp F9  &kp F10  &kp F13  &sys_reset
 &trans  &trans   &kp C_VOL_DN     &kp C_PLAY_PAUSE  &kp C_VOL_UP  &trans    &kp F4  &kp F5  &kp F6  &kp F11  &kp F14  &trans
 &trans  &trans   &trans           &trans            &trans        &trans    &kp F1  &kp F2  &kp F3  &kp F12  &kp F15  &trans
                                   &trans            &trans        &trans    &trans  &trans
